@@ -30,8 +30,7 @@ Date: ${date.toUTCString()}
 Content-Type: text/html, charset=utf-8;
 Content-Length: ${files.helium.length}
 
-${files.helium}
-`
+${files.helium}`
         } else if (key === '/hydrogen') {
             response = `HTTP/1.1 200 OK
 Server: Fenrir
@@ -39,8 +38,7 @@ Date: ${date.toUTCString()}
 Content-Type: text/html, charset=utf-8
 Content-Length: ${files.hydrogen.length}
 
-${files.hydrogen}
-`
+${files.hydrogen}`
         } else if (key === '/styles') {
             response = `HTTP/1.1 200 OK
 Server: Fenrir
@@ -48,8 +46,7 @@ Date: ${date.toUTCString()}
 Content-Type: text/css
 Content-Length: ${files.styles.length}
 
-${files.styles}
-`
+${files.styles}`
         } else {
             response = `HTTP/1.1 404 NOT FOUND
 Server: Fenrir
