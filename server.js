@@ -15,41 +15,46 @@ const server = net.createServer((socket) => {
         let dataArr = data.split('\r\n');
         let getfirstline = dataArr[0].split(' ');
         let key = getfirstline[1];
-        // console.log(dataArr);
+
         if (key === '/index.html' || key === '/') {
             response = `HTTP/1.1 200 OK
-Server: Fenrir
 Date: ${date.toUTCString()}
-Content-Type: text/html;
+Content-Type: text/html, charset=utf-8
 Content-Length: ${files.index.length}
-`
-            // console.log(response);
+
+${files.index}`
         } else if (key === '/helium') {
             response = `HTTP/1.1 200 OK
 Server: Fenrir
 Date: ${date.toUTCString()}
-Content-Type: ttext/html;
+Content-Type: text/html, charset=utf-8;
 Content-Length: ${files.helium.length}
+
+${files.helium}
 `
         } else if (key === '/hydrogen') {
             response = `HTTP/1.1 200 OK
 Server: Fenrir
 Date: ${date.toUTCString()}
-Content-Type: text/html;
+Content-Type: text/html, charset=utf-8
 Content-Length: ${files.hydrogen.length}
+
+${files.hydrogen}
 `
         } else if (key === '/styles') {
             response = `HTTP/1.1 200 OK
 Server: Fenrir
 Date: ${date.toUTCString()}
-Content-Type: text/css;
+Content-Type: text/css
 Content-Length: ${files.styles.length}
+
+${files.styles}
 `
         } else {
             response = `HTTP/1.1 404 NOT FOUND
 Server: Fenrir
 Date: ${date.toUTCString()}
-Content-Type: text/html`
+Content-Type: text/html, charset-utf-8`
         }
         // write outgoing data
         socket.write(response);
@@ -58,6 +63,7 @@ Content-Type: text/html`
 
     socket.on('end', () => {
         // handle client disconnect
+        console.log('Disconnect')
     });
 
     socket.on('error', (err) => {
