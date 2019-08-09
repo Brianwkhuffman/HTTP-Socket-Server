@@ -51,7 +51,9 @@ ${files.styles}`
             response = `HTTP/1.1 404 NOT FOUND
 Server: Fenrir
 Date: ${date.toUTCString()}
-Content-Type: text/html, charset-utf-8`
+Content-Type: text/html, charset-utf-8
+
+${files.notFound}`
         }
         // write outgoing data
         socket.write(response);
